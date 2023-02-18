@@ -7,6 +7,9 @@ branding:
 inputs:
   github-token:
     description: "The github token"
+  working-directory:
+    description: "The path in which semantic-release should run"
+    default: "."
 
 runs:
   using: "composite"
@@ -17,12 +20,15 @@ runs:
         node-version: 18
 
     - name: Install Dependecies
-      working-directory: ${{github.action_path}}
+      working-directory: ${{ inputs.working-directory }}
       run: npm ci
       shell: sh
     
     - name: Next version
-      run: baseConfigFile=./release.config.js npx semantic-release --extends=${GITHUB_ACTION_PATH}/pre-release.config.js --dry-run
+      working-directory: ${{ inputs.working-directory }}
+      run: |
+        cp ${GITHUB_ACTION_PATH}/pre-release.config.js .
+        baseConfigFile=./release.config.js npx semantic-release --extends=./pre-release.config.js --dry-run --no-ci
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
       shell: sh

@@ -12,6 +12,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.3.0
-      - uses: ./
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          path: 'test-1'
+          repository: 'nicolasfara/pulverization-framework'
+      - uses: actions/checkout@v3.3.0
+        with:
+          path: 'action'
+      - name: Fake commit
+        working-directory: 'test-1'
+        run: |
+          git config --global user.name "nicolasfara"
+          git config --global user.email "nicolas.farabegoli@gmail.com"
+          echo "foobar" >> deleteme.txt
+          git add deleteme.txt && git commit -m "fix: fake commit"
+      - uses: ./action
+        with:
+          working-directory: './test-1'
+          github-token: ${{ secrets.PERSONAL_TOKEN }}

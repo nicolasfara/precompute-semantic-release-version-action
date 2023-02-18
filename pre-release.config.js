@@ -4,6 +4,7 @@ const baseReleaseConfig = require(baseConfigFile)
 
 module.exports = {
     ...baseReleaseConfig,
+    skipTag: true,
     plugins: [
         ...baseReleaseConfig.plugins,
         [
