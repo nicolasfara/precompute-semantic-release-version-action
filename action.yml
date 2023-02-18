@@ -4,6 +4,10 @@ branding:
   icon: at-sign
   color: blue
 
+inputs:
+  github-token:
+    description: "The github token"
+
 runs:
   using: "composite"
   steps:
@@ -19,4 +23,6 @@ runs:
     
     - name: Next version
       run: baseConfigFile=./release.config.js npx semantic-release --extends=${GITHUB_ACTION_PATH}/pre-release.config.js --dry-run
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
       shell: sh
