@@ -1,0 +1,22 @@
+name: 'TODO'
+description: 'TODO'
+branding:
+  icon: at-sign
+  color: blue
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Nodejs
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install Dependecies
+      working-directory: ${{github.action_path}}
+      run: npm ci
+      shell: sh
+    
+    - name: Next version
+      run: baseConfigFile=./release.config.js npx semantic-release --extends=${GITHUB_ACTION_PATH}/pre-release.config.js --dry-run
+      shell: sh
