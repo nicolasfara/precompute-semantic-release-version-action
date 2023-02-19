@@ -1,3 +1,15 @@
+## [1.0.1](https://github.com/nicolasfara/precompute-semantic-release-version-action/compare/1.0.0...1.0.1) (2023-02-19)
+
+
+### General maintenance
+
+* **license:** add licence ([ee729ed](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/ee729eddf0213cb33c02a69d2de14062017fe8c2))
+
+
+### Documentation
+
+* add readme with usage example ([6d31e0c](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/6d31e0cff44c145298de6b007e183e605525196b))
+
 ## 1.0.0 (2023-02-19)
 
 
