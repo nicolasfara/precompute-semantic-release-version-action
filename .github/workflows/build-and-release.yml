@@ -36,12 +36,13 @@ jobs:
           github-token: ${{ secrets.PERSONAL_TOKEN }}
       - name: Test action outputs
         run: |
+          echo "Branch: ${GITHUB_REF##*/}"
           if [[ "${GITHUB_REF##*/}" == "master" ]]; then
-            [[ "${{ steps.precompute-version.outputs.next-version }}" != "" ]]
-            [[ "${{ steps.precompute-version.outputs.will-release }}" == "true" ]]
+            [[ "${{ steps.precompute-version.outputs.next-version }}" != "" ]] || (echo "Next version should be defined" && exit 1)
+            [[ "${{ steps.precompute-version.outputs.will-release }}" == "true" ]] || (echo "will-release should be true" && exit 2)
           else
-            [[ "${{ steps.precompute-no-version.outputs.next-version }}" == "" ]]
-            [[ "${{ steps.precompute-no-version.outputs.will-release }}" == "false" ]]
+            [[ "${{ steps.precompute-version.outputs.next-version }}" == "" ]]
+            [[ "${{ steps.precompute-version.outputs.will-release }}" == "false" ]]
           fi
       - name: Test no release
         working-directory: 'test-2'
