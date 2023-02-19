@@ -1,5 +1,5 @@
-name: 'TODO'
-description: 'TODO'
+name: 'precompute-semantic-release-version-action'
+description: 'Pre-compute the next release version (if any) using semantic-release'
 branding:
   icon: at-sign
   color: blue
