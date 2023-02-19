@@ -18,6 +18,11 @@ jobs:
           repository: 'nicolasfara/pulverization-framework'
       - uses: actions/checkout@v3.3.0
         with:
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          path: 'test-2'
+          repository: 'nicolasfara/pulverization-framework'
+      - uses: actions/checkout@v3.3.0
+        with:
           path: 'action'
       - name: Fake commit
         working-directory: 'test-1'
@@ -26,7 +31,44 @@ jobs:
           git config --global user.email "nicolas.farabegoli@gmail.com"
           echo "foobar" >> deleteme.txt
           git add deleteme.txt && git commit -m "fix: fake commit"
-      - uses: ./action
+      - name: Use the action
+        uses: ./action
+        id: precompute-version
         with:
           working-directory: './test-1'
           github-token: ${{ secrets.PERSONAL_TOKEN }}
+      - name: Test action outputs
+        run: |
+          [[ "${{ steps.precompute-version.outputs.next-version }}" != "" ]]
+          [[ "${{ steps.precompute-version.outputs.will-release }}" == "true" ]]
+      - name: Test no release
+        working-directory: 'test-2'
+        run: |
+          git config --global user.name "nicolasfara"
+          git config --global user.email "nicolas.farabegoli@gmail.com"
+          echo "foobar" >> deleteme.txt
+          git add deleteme.txt && git commit -m "chore: fake commit"
+      - uses: ./action
+        id: precompute-no-version
+        with:
+          working-directory: './test-2'
+          github-token: ${{ secrets.PERSONAL_TOKEN }}
+      - name: Test action outputs
+        run: |
+          [[ "${{ steps.precompute-no-version.outputs.next-version }}" == "" ]]
+          [[ "${{ steps.precompute-no-version.outputs.will-release }}" == "false" ]]
+
+  release:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3.3.0
+        with:
+          fetch-depth: 0
+      - name: Release with semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm ci
+          npx semantic-release

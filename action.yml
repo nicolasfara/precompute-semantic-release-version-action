@@ -11,6 +11,14 @@ inputs:
     description: "The path in which semantic-release should run"
     default: "."
 
+outputs:
+  will-release:
+    description: 'Set to true if a new release will be published; false otherwise.'
+    value: ${{ steps.precompute-semantic-release-version-action.outputs.will-release }}
+  next-version:
+    description: "The next version if a new release will be triggered. Empty string if no release will be made."
+    value: ${{ steps.precompute-semantic-release-version-action.outputs.next-version }}
+
 runs:
   using: "composite"
   steps:
@@ -22,13 +30,22 @@ runs:
     - name: Install Dependecies
       working-directory: ${{ inputs.working-directory }}
       run: npm ci
-      shell: sh
+      shell: bash
     
     - name: Next version
+      id: precompute-semantic-release-version-action
       working-directory: ${{ inputs.working-directory }}
       run: |
         cp ${GITHUB_ACTION_PATH}/pre-release.config.js .
         baseConfigFile=./release.config.js npx semantic-release --extends=./pre-release.config.js --dry-run --no-ci
+        if [[ -s .next-version ]]; then
+          echo "New release will be triggered: $(cat .next-version)"
+          echo "will-release=true" >> $GITHUB_OUTPUT
+          echo "next-version=$(cat .next-version)" >> $GITHUB_OUTPUT
+        else
+          echo "No release will be triggered"
+          echo "will-release=false" >> $GITHUB_OUTPUT
+        fi
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
-      shell: sh
+      shell: bash
