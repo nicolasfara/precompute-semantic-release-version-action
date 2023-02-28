@@ -37,7 +37,8 @@ runs:
       working-directory: ${{ inputs.working-directory }}
       run: |
         cp ${GITHUB_ACTION_PATH}/pre-release.config.js .
-        baseConfigFile=./release.config.js npx semantic-release --extends=./pre-release.config.js --dry-run --no-ci
+        mv release.config.js release.config.tmp.js
+        baseConfigFile=./release.config.tmp.js npx semantic-release --extends=./pre-release.config.js --dry-run --no-ci
         if [[ -s .next-version ]]; then
           echo "New release will be triggered: $(cat .next-version)"
           echo "will-release=true" >> $GITHUB_OUTPUT
@@ -46,6 +47,7 @@ runs:
           echo "No release will be triggered"
           echo "will-release=false" >> $GITHUB_OUTPUT
         fi
+        mv release.config.tmp.js release.config.js
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
       shell: bash
