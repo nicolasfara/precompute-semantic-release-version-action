@@ -1,3 +1,9 @@
+## [2.0.1](https://github.com/nicolasfara/precompute-semantic-release-version-action/compare/2.0.0...2.0.1) (2024-07-08)
+
+### Bug Fixes
+
+* rename target to `release.config.mjs` ([#67](https://github.com/nicolasfara/precompute-semantic-release-version-action/issues/67)) ([14eeaae](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/14eeaaec32cc96a6b492f016430ccf958b130b53))
+
 ## [2.0.0](https://github.com/nicolasfara/precompute-semantic-release-version-action/compare/1.0.2...2.0.0) (2024-07-08)
 
 ### ⚠ BREAKING CHANGES
