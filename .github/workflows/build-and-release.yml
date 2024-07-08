@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.7
         with:
-          token: ${{ secrets.token }}
+          token: ${{ github.token }}
           path: 'test-1'
           repository: 'pulvreakt/pulvreakt'
       - uses: actions/checkout@v4.1.7
