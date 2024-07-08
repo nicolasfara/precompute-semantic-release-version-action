@@ -31,7 +31,6 @@ jobs:
         id: precompute-version
         with:
           working-directory: './test-1'
-          github-token: ${{ secrets.PERSONAL_TOKEN }}
       - name: Test action outputs
         run: |
           echo "Branch: ${GITHUB_REF##*/}"
@@ -53,7 +52,6 @@ jobs:
         id: precompute-no-version
         with:
           working-directory: './test-2'
-          github-token: ${{ secrets.PERSONAL_TOKEN }}
       - name: Test action outputs
         run: |
           [[ "${{ steps.precompute-no-version.outputs.next-version }}" == "" ]]
