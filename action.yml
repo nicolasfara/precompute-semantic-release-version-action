@@ -10,6 +10,9 @@ inputs:
   working-directory:
     description: "The path in which semantic-release should run"
     default: "."
+  node-version-file:
+    description: "The file (default package.json) where the engine to be used is defined"
+    default: "package.json"
 
 outputs:
   will-release:
@@ -25,8 +28,7 @@ runs:
     - name: Setup Nodejs
       uses: actions/setup-node@v4.0.2
       with:
-        node-version: 20.15
-
+        node-version-file: ${{ inputs.working-directory }}/${{ inputs.node-version-file }}
     - name: Install Dependecies
       working-directory: ${{ inputs.working-directory }}
       run: npm ci
@@ -36,9 +38,9 @@ runs:
       id: precompute-semantic-release-version-action
       working-directory: ${{ inputs.working-directory }}
       run: |
-        cp ${GITHUB_ACTION_PATH}/pre-release.config.mjs .
-        mv release.config.mjs release.config.tmp.mjs
-        baseConfigFile=./release.config.tmp.mjs npx semantic-release --extends=./pre-release.config.mjs --dry-run --no-ci
+        mv release.config.mjs baseReleaseConfig.mjs
+        cp ${GITHUB_ACTION_PATH}/pre-release.config.mjs ./release.config.js
+        npx semantic-release --extends=./baseReleaseConfig.mjs --dry-run --no-ci
         if [[ -s .next-version ]]; then
           echo "New release will be triggered: $(cat .next-version)"
           echo "will-release=true" >> $GITHUB_OUTPUT
@@ -47,7 +49,7 @@ runs:
           echo "No release will be triggered"
           echo "will-release=false" >> $GITHUB_OUTPUT
         fi
-        mv release.config.tmp.mjs release.config.mjs
+        mv baseReleaseConfig.mjs release.config.mjs
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
       shell: bash

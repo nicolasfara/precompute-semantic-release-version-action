@@ -1,8 +1,6 @@
-const baseConfigFile = process.env.baseConfigFile
+import config from 'semantic-release-preconfigured-conventional-commits'  assert { type: "json" };
 
-import baseReleaseConfig from baseConfigFile
-
-baseReleaseConfig.plugins.push(
+config.plugins.push(
     [
         "@semantic-release/exec",
         {
@@ -11,4 +9,4 @@ baseReleaseConfig.plugins.push(
     ]
 )
 
-export default baseReleaseConfig;
+export default config;
