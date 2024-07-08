@@ -10,14 +10,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.7
         with:
-          token: ${{ secrets.PERSONAL_TOKEN }}
           path: 'test-1'
-          repository: 'nicolasfara/pulverization-framework'
+          repository: 'pulvreakt/pulvreakt'
       - uses: actions/checkout@v4.1.7
         with:
-          token: ${{ secrets.PERSONAL_TOKEN }}
           path: 'test-2'
-          repository: 'nicolasfara/pulverization-framework'
+          repository: 'pulvreakt/pulvreakt'
       - uses: actions/checkout@v4.1.7
         with:
           path: 'action'
@@ -64,6 +62,7 @@ jobs:
   release:
     needs: [test]
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     steps:
       - name: checkout
         uses: actions/checkout@v4.1.7
