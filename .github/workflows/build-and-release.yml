@@ -103,5 +103,9 @@ jobs:
         || !contains(join(needs.*.result, ','), 'cancelled')
       )
     steps:
+      - name: Install Node
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version-file: package.json
       - name: Verify that there were no failures
         run: ${{ !contains(join(needs.*.result, ','), 'failure') }}
