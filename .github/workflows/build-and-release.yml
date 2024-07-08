@@ -12,11 +12,9 @@ jobs:
         with:
           token: ${{ github.token }}
           path: 'test-1'
-          repository: 'pulvreakt/pulvreakt'
       - uses: actions/checkout@v4.1.7
         with:
           path: 'test-2'
-          repository: 'pulvreakt/pulvreakt'
       - uses: actions/checkout@v4.1.7
         with:
           path: 'action'
