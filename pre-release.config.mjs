@@ -1,6 +1,6 @@
-import baseReleaseConfig from 'baseReleaseConfig'
+import config from 'semantic-release-preconfigured-conventional-commits'
 
-baseReleaseConfig.plugins.push(
+config.plugins.push(
     [
         "@semantic-release/exec",
         {
@@ -9,4 +9,4 @@ baseReleaseConfig.plugins.push(
     ]
 )
 
-export default baseReleaseConfig;
+export default config;

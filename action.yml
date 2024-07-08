@@ -38,9 +38,9 @@ runs:
       id: precompute-semantic-release-version-action
       working-directory: ${{ inputs.working-directory }}
       run: |
-        cp ${GITHUB_ACTION_PATH}/pre-release.config.mjs .
         mv release.config.mjs baseReleaseConfig.mjs
-        npx semantic-release --extends=./pre-release.config.mjs --dry-run --no-ci
+        cp ${GITHUB_ACTION_PATH}/pre-release.config.mjs ./release.config.js
+        npx semantic-release --extends=./baseReleaseConfig.mjs --dry-run --no-ci
         if [[ -s .next-version ]]; then
           echo "New release will be triggered: $(cat .next-version)"
           echo "will-release=true" >> $GITHUB_OUTPUT
