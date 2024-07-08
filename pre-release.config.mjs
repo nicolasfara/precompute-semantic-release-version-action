@@ -1,6 +1,4 @@
-const baseConfigFile = process.env.baseConfigFile
-
-import baseReleaseConfig from baseConfigFile
+import baseReleaseConfig from 'baseReleaseConfig'
 
 baseReleaseConfig.plugins.push(
     [
