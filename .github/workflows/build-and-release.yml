@@ -40,7 +40,7 @@ jobs:
         uses: ./action
         id: precompute-version
         with:
-          token: ${{ steps.token.outputs.token }}
+          github-token: ${{ steps.token.outputs.token }}
           working-directory: './test-1'
       - name: Test action outputs
         run: |
@@ -62,7 +62,7 @@ jobs:
       - uses: ./action
         id: precompute-no-version
         with:
-          token: ${{ steps.token.outputs.token }}
+          github-token: ${{ steps.token.outputs.token }}
           working-directory: './test-2'
       - name: Test action outputs
         run: |
