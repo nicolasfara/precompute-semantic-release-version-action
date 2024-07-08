@@ -12,9 +12,9 @@ jobs:
         id: token
         run: |
           if '${{ !github.event.repository.fork && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) }}'; then
-            echo 'token=${{ github.token }}' >> GITHUB_OUTPUT
-          else
             echo 'token=${{ secrets.PERSONAL_TOKEN }}' >> GITHUB_OUTPUT
+          else
+            echo 'token=${{ github.token }}' >> GITHUB_OUTPUT
           fi
       - uses: actions/checkout@v4.1.7
         with:
