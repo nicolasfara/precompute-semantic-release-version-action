@@ -10,12 +10,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.7
         with:
-          repository: 'nicolasfara/experiments-modularization-framework'
+          repository: 'nicolasfara/precompute-semantic-release-test'
           token: ${{ github.token }}
           path: 'test-1'
       - uses: actions/checkout@v4.1.7
         with:
-          repository: 'nicolasfara/experiments-modularization-framework'
+          repository: 'nicolasfara/precompute-semantic-release-test'
           token: ${{ github.token }}
           path: 'test-2'
       - uses: actions/checkout@v4.1.7
