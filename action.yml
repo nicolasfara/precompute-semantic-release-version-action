@@ -39,7 +39,7 @@ runs:
       working-directory: ${{ inputs.working-directory }}
       run: |
         mv release.config.mjs baseReleaseConfig.mjs
-        cp ${GITHUB_ACTION_PATH}/pre-release.config.mjs ./release.config.js
+        cp ${GITHUB_ACTION_PATH}/pre-release.config.mjs ./release.config.mjs
         npx semantic-release --extends=./baseReleaseConfig.mjs --dry-run --no-ci
         if [[ -s .next-version ]]; then
           echo "New release will be triggered: $(cat .next-version)"
