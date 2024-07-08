@@ -8,15 +8,23 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     steps:
+      - name: Select the right token
+        id: token
+        run: |
+          if '${{ !github.event.repository.fork && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) }}'; then
+            echo 'token=${{ github.token }}' >> GITHUB_OUTPUT
+          else
+            echo 'token=${{ secrets.PERSONAL_TOKEN }}' >> GITHUB_OUTPUT
+          fi
       - uses: actions/checkout@v4.1.7
         with:
           repository: 'nicolasfara/precompute-semantic-release-test'
-          token: ${{ github.token }}
+          token: ${{ steps.token.outputs.token }}
           path: 'test-1'
       - uses: actions/checkout@v4.1.7
         with:
           repository: 'nicolasfara/precompute-semantic-release-test'
-          token: ${{ github.token }}
+          token: ${{ steps.token.outputs.token }}
           path: 'test-2'
       - uses: actions/checkout@v4.1.7
         with:
@@ -32,7 +40,7 @@ jobs:
         uses: ./action
         id: precompute-version
         with:
-          github-token: ${{ github.token }}
+          token: ${{ steps.token.outputs.token }}
           working-directory: './test-1'
       - name: Test action outputs
         run: |
@@ -54,7 +62,7 @@ jobs:
       - uses: ./action
         id: precompute-no-version
         with:
-          github-token: ${{ github.token }}
+          token: ${{ steps.token.outputs.token }}
           working-directory: './test-2'
       - name: Test action outputs
         run: |
