@@ -16,17 +16,17 @@ jobs:
           else
             echo 'token=${{ github.token }}' >> $GITHUB_OUTPUT
           fi
-      - uses: actions/checkout@v4.2.1
+      - uses: actions/checkout@v4.2.2
         with:
           repository: 'nicolasfara/precompute-semantic-release-test'
           token: ${{ steps.token.outputs.token }}
           path: 'test-1'
-      - uses: actions/checkout@v4.2.1
+      - uses: actions/checkout@v4.2.2
         with:
           repository: 'nicolasfara/precompute-semantic-release-test'
           token: ${{ steps.token.outputs.token }}
           path: 'test-2'
-      - uses: actions/checkout@v4.2.1
+      - uses: actions/checkout@v4.2.2
         with:
           path: 'action'
       - name: Fake commit
@@ -75,7 +75,7 @@ jobs:
     if: github.event_name == 'push'
     steps:
       - name: checkout
-        uses: actions/checkout@v4.2.1
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
           token: ${{ secrets.PERSONAL_TOKEN }}
