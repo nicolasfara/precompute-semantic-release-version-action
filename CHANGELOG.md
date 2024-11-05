@@ -1,3 +1,43 @@
+## [2.0.2](https://github.com/nicolasfara/precompute-semantic-release-version-action/compare/2.0.1...2.0.2) (2024-11-05)
+
+### Dependency updates
+
+* **deps:** update actions/setup-node action to v4.0.3 ([c334c6d](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/c334c6d919f413d85d2e7710cd438bf36593294f))
+* **deps:** update actions/setup-node action to v4.0.4 ([a107ab2](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/a107ab2e4f7574ab208f1e08533ae757a7ffc19b))
+* **deps:** update actions/setup-node action to v4.1.0 ([152ec17](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/152ec1731fb89cbd47aacadd940032548b5f759d))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.101 ([5b2f696](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/5b2f696ead545f734e8170f5198c1bea4dbe5117))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.102 ([1b5328d](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/1b5328d3fc741467caf7d32d96f6729df2d2b618))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.103 ([9a72cd0](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/9a72cd0eaca3357951d5e98b5a273bdfdb18446b))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.104 ([392db08](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/392db08ace9c99d5471fa7bbb12b9c184a461fb0))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.105 ([fc16244](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/fc162443db45c463eecc3dc0da11682a1127b75c))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.106 ([4fa791f](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/4fa791f73e9ca97ae08acbbc72f970fe7bb4fbd3))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.107 ([57aff12](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/57aff1228ed1231b24b6bbab730360480e77abc4))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.108 ([962c88e](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/962c88ecf832cbbd1dbbe99b73f9ddfcad52cb41))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.109 ([1180362](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/1180362abe8052aaa0aeb760fa8cdac407a739a8))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.110 ([9201137](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/92011372d327a90498276b440647654a51f775e6))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.111 ([285578c](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/285578c5ad803e1d46b3b956ca07cba8f54e5367))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.112 ([22008c2](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/22008c246a3d27d64aa8335f53afc42972a039f8))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.113 ([f56d8e1](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/f56d8e170d3b02418161642dd1f83dfed6939f9f))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.114 ([00628d6](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/00628d62b0d318e96f8363180d4c94ce6cab69c9))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.89 ([8cb8533](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/8cb8533bc64e8c12aad1eea32810ab602d41911d))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.90 ([cb78aff](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/cb78affabaa61c6b975a4885e068524d4342bb16))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.91 ([8d05365](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/8d05365c143d05980a74b5565052161af7783446))
+* **deps:** update node.js to 20.17 ([05ef0a0](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/05ef0a042305e33ccfa26cbfefc20edb09d86f47))
+* **deps:** update node.js to 20.18 ([fa1bdf1](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/fa1bdf13a48d42ec8f48574639aaa05564da4cac))
+* **deps:** update node.js to v22 ([c423db1](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/c423db1ee042e960dfc261e64eb2badd0880a1fc))
+
+### Bug Fixes
+
+* use `with` instead `assert` ([4a19afd](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/4a19afd1f96336a5d36cd945525be3e154fd2be6))
+
+### Build and continuous integration
+
+* **deps:** update actions/checkout action to v4.2.0 ([bee9c53](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/bee9c53143ff025761ad9cb6da6eb2f164e63ad4))
+* **deps:** update actions/checkout action to v4.2.1 ([dbbaef8](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/dbbaef89f0e83c98630881e1e6fe9959ee794361))
+* **deps:** update actions/checkout action to v4.2.2 ([06b91de](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/06b91de40a4a3158142a476fa5b07c96c889c39b))
+* **deps:** update dependency ubuntu to v24 ([7a4feb8](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/7a4feb8219db9b338bc51440d0554fe886f2b223))
+* **renovate:**  use `with` when importing the configuration instead of `assert` in pre-release ([#96](https://github.com/nicolasfara/precompute-semantic-release-version-action/issues/96)) ([767bbc5](https://github.com/nicolasfara/precompute-semantic-release-version-action/commit/767bbc5d4c97be70ffbfabf99e9e68036f96cc69))
+
 ## [2.0.1](https://github.com/nicolasfara/precompute-semantic-release-version-action/compare/2.0.0...2.0.1) (2024-07-08)
 
 ### Bug Fixes
