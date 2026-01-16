@@ -26,7 +26,7 @@ runs:
   using: "composite"
   steps:
     - name: Setup Nodejs
-      uses: actions/setup-node@v6.1.0
+      uses: actions/setup-node@v6.2.0
       with:
         node-version-file: ${{ inputs.working-directory }}/${{ inputs.node-version-file }}
     - name: Install Dependecies
